@@ -1,0 +1,6 @@
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\bin\Debug\Entidad.dll
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\bin\Debug\Entidad.pdb
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\obj\Debug\Entidad.csproj.AssemblyReference.cache
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\obj\Debug\Entidad.dll
+C:\Users\sofia\Documents\CUARTO SEMESTRE\POO III\Segundo Corte\Pulsaciones4.7\Entidad\obj\Debug\Entidad.pdb
