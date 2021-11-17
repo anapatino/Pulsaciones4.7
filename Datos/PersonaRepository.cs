@@ -21,13 +21,14 @@ namespace Datos
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "insert into persona (identificacion,nombre,edad,sexo,pulsacion,fecha) values (@identificacion,@nombre,@edad,@sexo,@pulsacion,@fecha)";
+                command.CommandText = "insert into persona (identificacion,nombre,edad,sexo,pulsacion,fecha)" +
+                    " values (@identificacion,@nombre,@edad,@sexo,@pulsacion,@fecha)";
                 command.Parameters.Add(new SqlParameter("@identificacion", persona.Identificacion));
-                command.Parameters.Add(new SqlParameter("@nombre", persona.Nombre));
+                command.Parameters.Add(new SqlParameter("@nombre",persona.Nombre));
                 command.Parameters.Add(new SqlParameter("@edad", persona.Edad));
                 command.Parameters.Add(new SqlParameter("@sexo", persona.Sexo));
-                command.Parameters.Add(new SqlParameter("@pulsacion", persona.Pulsacion));
-                command.Parameters.Add(new SqlParameter("@fecha", persona.FechaNacimiento));
+                command.Parameters.Add(new SqlParameter("@pulsacion",persona.Pulsacion));
+                command.Parameters.Add(new SqlParameter("@fecha",persona.FechaNacimiento));
                 int fila = command.ExecuteNonQuery();
             }
         }
@@ -58,49 +59,30 @@ namespace Datos
             return personas;
         }
 
-        public void Modificar(string id, Persona personaNew)
+        public void Modificar(string identificacion, Persona personaNuevo)
         {
-            
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "update persona set nombre=@nombre, edad=@edad,sexo=@sexo, pulsacion=@pulsacion fecha=@fecha where identificacion=@identificacion";
+                command.Parameters.Add(new SqlParameter("@identificacion", identificacion));
+                command.Parameters.Add(new SqlParameter("@nombre", personaNuevo.Nombre));
+                command.Parameters.Add(new SqlParameter("@edad", personaNuevo.Edad));
+                command.Parameters.Add(new SqlParameter("@sexo", personaNuevo.Sexo));
+                command.Parameters.Add(new SqlParameter("@pulsacion", personaNuevo.Pulsacion));
+                command.Parameters.Add(new SqlParameter("@fecha", personaNuevo.FechaNacimiento));
+                int fila = command.ExecuteNonQuery();
+            }
         }
 
-        public Persona Eliminar(string id)
+        public void Eliminar(string identificacion)
         {
-            bool resultado = File.Exists(ruta);
-            if (resultado == true)
+            using (var command = _connection.CreateCommand())
             {
-                List<Persona> personas = Consultar();
-                File.Delete(ruta);
-                foreach (var item in personas)
-                {
-                    if (item.Identificacion.Equals(id))
-                    {
-                        return item;
-                    }
-                    else
-                    {
-                        Guardar(item);
-                    }
-                }
+                command.CommandText = "delete From persona where identificacion=@identificacion";
+                command.Parameters.Add(new SqlParameter("@identificacion", identificacion));
+                int fila = command.ExecuteNonQuery();
             }
-            return null;
         }
-        public Persona BuscarI(string identificacion)
-        {
-            bool resultado = File.Exists(ruta);
-            if (resultado == true)
-            {
-                List<Persona> personas = Consultar();
-                foreach (var item in personas)
-                {
-                    if (item.Identificacion.Equals(identificacion))
-                    {
-                        return item;
-                    }
-                }
-            }
-            return null;
-        }
-
 
         public List<Persona> FiltrarPorSexoVersionLarga(string sexo)
         {

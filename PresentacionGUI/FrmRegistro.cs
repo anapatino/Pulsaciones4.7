@@ -53,7 +53,6 @@ namespace PresentacionGUI
             persona.CalcularPulsacion();
             txtPulsacion.Text = persona.Pulsacion.ToString();
             return persona;
-           
         }
     }
 }
