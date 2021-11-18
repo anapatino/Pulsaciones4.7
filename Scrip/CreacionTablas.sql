@@ -4,7 +4,7 @@ identificacion VARCHAR(11) Primary Key,
 nombre VARCHAR(50) Not null,
 edad INT not null,
 sexo VARCHAR(1) Not null,
-pulsacion decimal (2,1),
+pulsacion decimal ,
 fecha DATE
 );
 
